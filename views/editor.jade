@@ -1,0 +1,77 @@
+doctype html
+html(lang="en")
+  head
+    title Editor
+    style.
+      .editor {
+        height: 150px;
+        width: 100%;
+      }
+  body
+    h1 Editor
+    button(id="editor_submit") SUBMIT
+    br
+    h2 JSON
+    div.editor(id="json_editor")
+      | {"username": "admin"}
+    h2 Jade
+    div.editor(id="jade_editor")
+      | h1 hihi
+    h2 CSS
+    div.editor(id="css_editor")
+      | a {color: red;}
+    h2 JS
+    div.editor(id="js_editor")
+      | console.log("hihi"); function foo() {return true;}
+
+    script(src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js")
+    script.
+      $(document).ready(function() {
+
+        // json
+        var json_editor = ace.edit("json_editor");
+        json_editor.setTheme("ace/theme/monokai");
+        json_editor.getSession().setMode("ace/mode/json");
+
+        var val = json_editor.session.getValue()
+        console.log(val);
+        var o = JSON.parse(val); // may throw if json is malformed
+        val = JSON.stringify(o, null, 4); // 4 is the indent size
+        json_editor.session.setValue(val);
+
+        // jade
+        var jade_editor = ace.edit("jade_editor");
+        jade_editor.setTheme("ace/theme/monokai");
+        jade_editor.getSession().setMode("ace/mode/jade");
+        jade_editor.setOption("showInvisibles", true);
+
+        // css
+        var css_editor = ace.edit("css_editor");
+        css_editor.setTheme("ace/theme/monokai");
+        css_editor.getSession().setMode("ace/mode/css");
+        css_editor.setOption("showInvisibles", true);
+
+        // js
+        var js_editor = ace.edit("js_editor");
+        js_editor.setTheme("ace/theme/monokai");
+        js_editor.getSession().setMode("ace/mode/javascript");
+
+        $("#editor_submit").click(function(){
+          var obj = {};
+          obj.json = json_editor.getValue();
+          obj.jade = jade_editor.getValue();
+          obj.css = css_editor.getValue();
+          obj.js = js_editor.getValue();
+          console.log(obj);
+        });
+
+      });
+
+
+
+
+
+
+
+

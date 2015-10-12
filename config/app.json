@@ -1,0 +1,19 @@
+{
+  "redis": {
+    "port": 6379,
+    "server": "localhost",
+    "key": "",
+    "db": 1
+  },
+  "google": {
+    "auth": {
+      "clientID": "583968434694-ol6cfhuboru12qtnlbq73uredcnvql1d.apps.googleusercontent.com",
+      "clientSecret": "CCSnzdsjEB42QTskVSK6wyvT",
+      "scope": ["https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email"
+      ],
+      "callbackURL": "http://localhost.azuqua.com/auth/google/callback"
+    },
+    "allowed": ["nikhil@azuqua.com", "gloria@azuqua.com"]
+  }
+}

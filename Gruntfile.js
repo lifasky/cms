@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     },
     jshint: {
       server: {
-        src: ["Gruntfile.js", "app.js", "lib/js/**/*.js"],
+        src: ["Gruntfile.js", "app.js", "lib/**/*.js"],
         options: {
           jshintrc: true,
           globals: {
@@ -40,9 +40,10 @@ module.exports = function(grunt) {
       },
       configFiles: {
         files: ["Gruntfile.js", "app.js", "lib/**/*.js"],
-        tasks: ["jshint:server"],
+        tasks: ["jshint:server", "develop"],
         options: {
-          reload: port
+          nospawn: true,
+          livereload: reloadPort
         }
       },
       jade: {

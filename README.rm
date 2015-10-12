@@ -1,1 +1,128 @@
 # CMS
+
+"doctype html\n" + 
+"html(lang='en')\n" + 
+" head\n" + 
+comp.head + 
+"  style.\n" + 
+"   /* theme stypes */\n" + 
+"   !{stype_theme}" + "\n" + 
+"  style.\n" + 
+"   /* page stypes */\n" + 
+"   !{stype_page}" + 
+  "\n" + 
+"  script.\n" + 
+"   !{script_head_theme}" + 
+  "\n" + 
+"  script.\n" + 
+"   !{script_head_page}" + 
+  "\n" + 
+" body\n" + 
+  comp.header + 
+"  .body_full\n" + 
+    comp.content + 
+    comp.footer + 
+    "\n" + 
+"  script(src='//localhost:35729/livereload.js')\n" + // livereload
+"  script.\n" + 
+"   /* theme scripts */\n" + 
+"   !{script_end_theme}" + 
+  "\n" + 
+"  script.\n" + 
+"   /* page scripts */\n" + 
+"   !{script_end_page}";
+
+
+3 sections: view + content + block(soon)
+
+each view has: jade + style + script
+
+theme: layout, view_head_theme, stype_theme, script_head_theme, view_header_theme, view_fooder_theme, script_end_theme
+page: view_content_page, stype_page, script_head_page, script_end_page
+page_content: <prefix, root_page, view, default_field, ...>
+#block: view_content_block, style_block, script_head_block, script_end_block
+
+
+DB SCHEME:
+------------------------------------
+TABLE theme_tmpls
+{
+	id: t_t_id
+	view_tmpl: // structure of the view
+	site_content_tmpl: // template of major content
+	view_head:
+	view_header:
+	view_footer:
+	style:
+	script_head:
+	script_end:
+}
+
+TABLE page_tmpls 
+{
+	id: p_t_id
+	theme_id: t_t_id
+	view_content:
+	style:
+	script_head:
+	script_end:
+	content_tmpl:
+}
+
+TABLE themmes 
+{
+	id: t_id
+	content: {}
+}
+
+TABLE pages 
+{
+	id: p_id
+	url:
+	page_tmpl_id: p_t_id
+	redirect_urls: []
+	body: {}
+	...
+	/* refer default content_tmpl */
+	...
+}
+
+TABLE routes 
+{
+	path_1: p_id
+	path_2: p_id
+}
+
+TABLE users 
+{
+	id: u_id === email
+	name:
+	permission: <admin, dev, content, read_only>
+}
+
+
+default content_tmpl
+______________
+
+id:
+
+url:
+redirect_urls:
+
+title:
+description:
+keywords:
+
+theme_tmpl_id:
+page_tmpl_id:
+
+publish:
+
+content: {}
+draft_content: {}
+
+
+
+
+
+
