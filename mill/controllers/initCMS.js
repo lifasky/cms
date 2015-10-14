@@ -1,6 +1,7 @@
 "use strict";
 
 var Mill = require("../store");
+var async = require("async");
 var _ = require("lodash");
 
 var theme_layout = "" +
@@ -98,49 +99,64 @@ var users = {
   }
 }
 
-
 module.exports = function(client) {
 
   var mill = new Mill(client);
 
+  function forEach(objs, module, action, cb) {
+    var arr = [];
+    _.forEach(objs, function(n, key) {
+      n._key = key;
+      arr.push(n);
+    });
+    async.each(arr, function(item, callback) {
+      mill[module][action](item._key, item, function(err, data) {
+        console.log("CMS: Initialize ", module, action, item._key, err, data);
+        callback(err, data);
+      });
+    }, cb);
+  }
+
   return {
 
     init: function(req, res) {
-      // initial theme template
-      _.forEach(theme_tmpls, function(n, key) {
-        mill.theme_tmpl.update(key, n, function(err, data) {
-          console.log("CMS: Initialize Theme Template", key, err, data);
-        });
+      async.parallel([
+        function(callback) {
+          // initial theme template
+          forEach(theme_tmpls, "theme_tmpl", "update", callback);
+        },
+        function(callback) { // initial page template
+          forEach(page_tmpls, "page_tmpl", "update", callback);
+        },
+        function(callback) { // initial pages
+          forEach(pages, "page", "update", callback);
+        },
+        function(callback) {
+          // initial routes
+          var arr = [];
+          _.forEach(routes, function(n, key) {
+            var obj = {};
+            obj.key = key;
+            obj.value = n;
+            arr.push(obj);
+          });
+          async.each(arr, function(item, cb) {
+            mill.route.update(item.key, item.value, function(err, data) {
+              console.log("CMS: Initialize ", "route", "update", item.key, err, data);
+              cb(err, data);
+            });
+          }, callback);
+        },
+        function(callback) { // inital users
+          forEach(users, "user", "update", callback);
+        }
+      ], function(err) {
+        if (err) {
+          res.send(err.toString());
+        } else {
+          res.send("Initialized Whole Mill");
+        }
       });
-
-      // initial page template
-      _.forEach(page_tmpls, function(n, key) {
-        mill.page_tmpl.update(key, n, function(err, data) {
-          console.log("CMS: Initialize Page Template", key, err, data);
-        });
-      });
-
-      // initial pages
-      _.forEach(pages, function(n, key) {
-        mill.page.update(key, n, function(err, data) {
-          console.log("CMS: Initialize Pages", key, err, data);
-        });
-      });
-
-      // initial routes
-      _.forEach(routes, function(n, key) {
-        mill.route.update(key, n, function(err, data) {
-          console.log("CMS: Initialize Routes", key, err, data);
-        });
-      });
-
-      // inital users
-      _.forEach(users, function(n, key) {
-        mill.user.update(key, n, function(err, data) {
-          console.log("CMS: Initialize Users", key, err, data);
-        });
-      });
-
     }
 
   };
