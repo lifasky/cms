@@ -48,8 +48,9 @@ DB SCHEME:
 TABLE theme_tmpls
 {
 	id: t_t_id
-	view_tmpl: // structure of the view
-	site_content_tmpl: // template of major content
+	name:
+	layout: // structure of the view
+	content: //  major content for the whole site which using this theme
 	view_head:
 	view_header:
 	view_footer:
@@ -62,25 +63,19 @@ TABLE page_tmpls
 {
 	id: p_t_id
 	theme_id: t_t_id
+	name:
 	view_content:
 	style:
 	script_head:
 	script_end:
-	content_tmpl:
-}
-
-TABLE themmes 
-{
-	id: t_id
-	content: {}
+	schema:
 }
 
 TABLE pages 
 {
 	id: p_id
-	url:
+	urls:
 	page_tmpl_id: p_t_id
-	redirect_urls: []
 	body: {}
 	...
 	/* refer default content_tmpl */
@@ -101,13 +96,12 @@ TABLE users
 }
 
 
-default content_tmpl
+default schema
 ______________
 
 id:
 
-url:
-redirect_urls:
+urls:
 
 title:
 description:
@@ -119,7 +113,6 @@ page_tmpl_id:
 publish:
 
 content: {}
-draft_content: {}
 
 
 

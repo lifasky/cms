@@ -69,14 +69,15 @@ function compilePage(template, contents) {
 }
 
 module.exports = function(raw_template, contents) {
+
   var template = buildTemplate({
-    layout: raw_template.layout,
-    head: raw_template.view_head,
-    header: raw_template.view_header,
-    content: raw_template.view_content,
-    footer: raw_template.view_footer
+    layout: raw_template.layout || defaultLayout(),
+    head: raw_template.head,
+    header: raw_template.header,
+    content: raw_template.content,
+    footer: raw_template.footer
   });
-  var fn = jade.compile(template);
-  var html = fn(contents);
+
+  var html = compilePage(template, contents)
   return html;
 }

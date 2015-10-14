@@ -1,0 +1,66 @@
+{
+
+  "*": {
+    "get": {
+      "controller": "page",
+      "action": "show",
+      "middleware": null
+    }
+  },
+
+  "/api/page": {
+    "get": {
+      "controller": "page",
+      "action": "search",
+      "middleware": null
+    },
+    "post": {
+      "controller": "page",
+      "action": "create",
+      "middleware": null
+    }
+  },
+
+  "/api/page/:id": {
+    "get": {
+      "controller": "page",
+      "action": "get",
+      "middleware": null
+    },
+    "put": {
+      "controller": "page",
+      "action": "update",
+      "middleware": null
+    },
+    "delete": {
+      "controller": "page",
+      "action": "delete",
+      "middleware": null
+    }
+  },
+  
+  "/api/page/:id/publish": {
+    "put": {
+      "controller": "page",
+      "action": "publish",
+      "middleware": null
+    }
+  },
+
+  "/api/page/:id/unPublish": {
+    "put": {
+      "controller": "page",
+      "action": "unPublish",
+      "middleware": null
+    }
+  },
+
+  "/api/page/:id/content": {
+    "put": {
+      "controller": "page",
+      "action": "updateContent",
+      "middleware": null
+    }
+  }
+
+}

@@ -6,7 +6,8 @@ var config = global.config = require("./config/app.json");
 var jade = require("jade");
 var redis = require("redis");
 var async = require("async");
-var display = require("./lib/controller/display");
+var Mill = require("./mill");
+// var initCMS = require("./mill/controllers/initCMS");
 
 var app = express();
 
@@ -27,7 +28,9 @@ client.select(config.redis.db, function(err) {
     process.exit();
   }
 
-  app.use(display(client));
+  // initCMS(client);
+  var mill = new Mill(client);
+  app.use(mill);
 
 });
 

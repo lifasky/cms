@@ -1,0 +1,45 @@
+{
+  
+  "/api/page-tempate": {
+    "post": {
+      "controller": "page_template",
+      "action": "create",
+      "middleware": null
+    }
+  },
+
+  "/api/page-tempate/:id": {
+    "get": {
+      "controller": "page_template",
+      "action": "get",
+      "middleware": null
+    },
+    "put": {
+      "controller": "page_template",
+      "action": "update",
+      "middleware": null
+    },
+    "delete": {
+      "controller": "page_template",
+      "action": "delete",
+      "middleware": null
+    }
+  },
+
+  "/api/page-tempate/:id/schema": {
+    "put": {
+      "controller": "page_template",
+      "action": "updateSchema",
+      "middleware": null
+    }
+  },
+
+  "/api/page-tempate/keys": {
+    "get": {
+      "controller": "page_template",
+      "action": "keys",
+      "middleware": null
+    }
+  }
+  
+}
