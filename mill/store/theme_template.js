@@ -50,6 +50,19 @@ ThemeTemplate.prototype.get = function(id, cb) {
   });
 };
 
+ThemeTemplate.prototype.getall = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  client.getall(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: ThemeTemplate.getall:", err);
+      cb(err);
+    } else {
+      cb(null, data);
+    }
+  });
+};
+
 ThemeTemplate.prototype.create = function(tmpl, cb) {
   var client = this.client;
   var table = this.table;
@@ -114,6 +127,37 @@ ThemeTemplate.prototype.updateContent = function(id, content, cb) {
       cb(err);
     } else {
       cb(null, value);
+    }
+  });
+};
+
+ThemeTemplate.prototype.keys = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  client.keys(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: ThemeTemplate.keys:", err);
+      cb(err);
+    } else {
+      cb(null, data);
+    }
+  });
+};
+
+ThemeTemplate.prototype.list = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  var list = [];
+  client.getall(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: ThemeTemplate.list:", err);
+      cb(err);
+    } else {
+      _.forEach(data, function(n, key) {
+        list.push({"id": key, "name": name});
+      });
+      list = _.sortBy(list, "name");
+      cb(null, list);
     }
   });
 };

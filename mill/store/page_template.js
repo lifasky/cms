@@ -48,6 +48,19 @@ PageTemplate.prototype.get = function(id, cb) {
   });
 };
 
+PageTemplate.prototype.getall = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  client.getall(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: PageTemplate.getall:", err);
+      cb(err);
+    } else {
+      cb(null, data);
+    }
+  });
+};
+
 PageTemplate.prototype.create = function(tmpl, cb) {
   var client = this.client;
   var table = this.table;
@@ -125,6 +138,24 @@ PageTemplate.prototype.keys = function(cb) {
       cb(err);
     } else {
       cb(null, data);
+    }
+  });
+};
+
+PageTemplate.prototype.list = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  var list = [];
+  client.getall(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: PageTemplate.list:", err);
+      cb(err);
+    } else {
+      _.forEach(data, function(n, key) {
+        list.push({"id": key, "name": name});
+      });
+      list = _.sortBy(list, "name");
+      cb(null, list);
     }
   });
 };

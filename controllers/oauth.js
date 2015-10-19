@@ -11,7 +11,7 @@ var _ = require("lodash");
 module.exports = function(app, client) {
 
   app.use(passport.initialize());
-  app.use(passport.session());
+  app.use(passport.session(), function(req, res, next) { console.log(req.session); next()});
 
   passport.serializeUser(function(user, done) {
     done(null, user);

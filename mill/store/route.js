@@ -25,7 +25,20 @@ Route.prototype.get = function(url, cb) {
       console.log("ERROR: Route.get:", err);
       cb(err);
     } else {
-      cb(null, data.page_id);
+      cb(null, data && data.page_id);
+    }
+  });
+};
+
+Route.prototype.getall = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  client.getall(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: Route.getall:", err);
+      cb(err);
+    } else {
+      cb(null, data);
     }
   });
 };

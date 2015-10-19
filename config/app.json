@@ -5,6 +5,15 @@
     "key": "",
     "db": 1
   },
+  "sessions": {
+    "secret": "29fb66e5a4549b77893cb0509c81a968e9ff5bab",
+    "key": "425c1c917367e",
+    "ttl": 86400000,
+    "cookie": {
+      "domain": ".azuqua.com",
+      "maxAge": 86400000
+    }
+  },
   "google": {
     "auth": {
       "clientID": "583968434694-ol6cfhuboru12qtnlbq73uredcnvql1d.apps.googleusercontent.com",
@@ -12,7 +21,7 @@
       "scope": ["https://www.googleapis.com/auth/userinfo.profile",
         "https://www.googleapis.com/auth/userinfo.email"
       ],
-      "callbackURL": "http://localhost.azuqua.com/auth/google/callback"
+      "callbackURL": "http://localhost.azuqua.com:9000/auth/google/callback"
     },
     "allowed": ["nikhil@azuqua.com", "gloria@azuqua.com"]
   }

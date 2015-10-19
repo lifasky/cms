@@ -22,7 +22,14 @@ module.exports = function(grunt) {
     },
     jshint: {
       server: {
-        src: ["Gruntfile.js", "app.js", "lib/**/*.js"],
+        src: [
+          "Gruntfile.js", 
+          "app.js", 
+          "lib/**/*.js", 
+          "controllers/**/*.js", 
+          "middleware/**/*.js", 
+          "config/**/*.json"
+          ],
         options: {
           jshintrc: true,
           globals: {
@@ -39,8 +46,18 @@ module.exports = function(grunt) {
         nospawn: true
       },
       configFiles: {
-        files: ["Gruntfile.js", "app.js", "lib/**/*.js"],
-        tasks: ["jshint:server", "develop"],
+        files: [
+          "Gruntfile.js", 
+          "app.js", 
+          "lib/**/*.js", 
+          "controllers/**/*.js", 
+          "middleware/**/*.js", 
+          "config/**/*.json"
+          ],
+        tasks: [
+          "jshint:server", 
+          "develop"
+          ],
         options: {
           nospawn: true,
           livereload: reloadPort

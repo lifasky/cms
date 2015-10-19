@@ -177,25 +177,47 @@ Page.prototype.updateContent = function(id, content, cb) {
   var client = this.client;
   var table = this.table;
   var key = id
-  var value = {};
-  client.get(table, key, function(err, data) {
+  var value = {
+    "content": content
+  };
+  value.updated_at = getDate();
+  client.update(table, key, value, function(err, data) {
     if (err) {
       console.log("ERROR: Page.updateContent:", err);
       cb(err);
     } else {
-      data = _.extend(data.content, content);
-      value = {
-        "content": data.content
-      };
-      value.updated_at = getDate();
-      client.update(table, key, value, function(err, data) {
-        if (err) {
-          console.log("ERROR: Page.updateContent:", err);
-          cb(err);
-        } else {
-          cb(null, value);
-        }
+      cb(null, data);
+    }
+  });
+};
+
+Page.prototype.keys = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  client.keys(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: Page.keys:", err);
+      cb(err);
+    } else {
+      cb(null, data);
+    }
+  });
+};
+
+Page.prototype.list = function(cb) {
+  var client = this.client;
+  var table = this.table;
+  var list = [];
+  client.getall(table, function(err, data) {
+    if (err) {
+      console.log("ERROR: Page.list:", err);
+      cb(err);
+    } else {
+      _.forEach(data, function(n, key) {
+        list.push({"id": key, "title": title});
       });
+      list = _.sortBy(list, "title");
+      cb(null, list);
     }
   });
 };

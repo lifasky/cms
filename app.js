@@ -17,6 +17,13 @@ app.set("view engine", "jade");
 app.use(express.static(path.join(__dirname, "public")));
 app.set("port", 9000);
 
+/**
+ * Initialize Session Handling
+ */
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+var RedisStore = require("connect-redis")(session);
+
 var client = redis.createClient(config.redis.port, config.redis.server, {
   auth_pass: config.redis.key
 });
@@ -24,20 +31,47 @@ var client = redis.createClient(config.redis.port, config.redis.server, {
 client.select(config.redis.db, function(err) {
   if (err) {
     err.msg = "Error creating redis clients!";
-    process.exit();
+    console.log(err);
+    // process.exit();
+
+    app.get("*", function(req, res) {
+      res.status(404).send("error/404");
+    });
+
+    app.listen(app.get("port"), function() {
+      console.log("www server started on: " + app.get("port"));
+    });
   }
 
+  var sessionsMiddleware = session({
+    store: new RedisStore({
+      client: client,
+      ttl: config.sessions.ttl
+    }),
+    secret: config.sessions.secret,
+    key: config.sessions.key,
+    saveUninitialized: false,
+    resave: false,
+    cookie: config.sessions.cookie
+  });
+
+  app.use(cookieParser());
+  app.use("/", sessionsMiddleware);
+
+
   var mill = new Mill(client);
+  
+  require("./controllers/oauth")(app, mill);
+
   app.use(mill);
 
 });
 
-
-app.get("/login", function(req, res) {
+app.get("/admin/login", function(req, res) {
   res.render("login");
 });
 
-app.get("/editor", function(req, res) {
+app.get("/admin/editor", function(req, res) {
   res.render("editor");
 });
 
