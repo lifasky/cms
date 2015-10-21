@@ -1,0 +1,73 @@
+[
+
+  {
+    "route": "/api/page_tmpl",
+    "methods": {
+      "get": {
+        "controller": "page_template",
+        "action": "getall",
+        "middleware": null
+      },
+      "post": {
+        "controller": "page_template",
+        "action": "create",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page_tmpl/keys",
+    "methods": {
+      "get": {
+        "controller": "page_template",
+        "action": "keys",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page_tmpl/list",
+    "methods": {
+      "get": {
+        "controller": "page_template",
+        "action": "list",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page_tmpl/:id",
+    "methods": {
+      "get": {
+        "controller": "page_template",
+        "action": "get",
+        "middleware": null
+      },
+      "put": {
+        "controller": "page_template",
+        "action": "update",
+        "middleware": null
+      },
+      "delete": {
+        "controller": "page_template",
+        "action": "delete",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page_tmpl/:id/schema",
+    "methods": {
+      "put": {
+        "controller": "page_template",
+        "action": "updateSchema",
+        "middleware": null
+      }
+    }
+  }
+
+]

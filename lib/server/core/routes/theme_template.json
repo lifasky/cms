@@ -1,0 +1,73 @@
+[
+
+  {
+    "route": "/api/theme_tmpl",
+    "methods": {
+      "get": {
+        "controller": "theme_template",
+        "action": "getall",
+        "middleware": null
+      },
+      "post": {
+        "controller": "theme_template",
+        "action": "create",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/theme_tmpl/keys",
+    "methods": {
+      "get": {
+        "controller": "theme_template",
+        "action": "keys",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/theme_tmpl/list",
+    "methods": {
+      "get": {
+        "controller": "theme_template",
+        "action": "list",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/theme_tmpl/:id",
+    "methods": {
+      "get": {
+        "controller": "theme_template",
+        "action": "get",
+        "middleware": null
+      },
+      "put": {
+        "controller": "theme_template",
+        "action": "update",
+        "middleware": null
+      },
+      "delete": {
+        "controller": "theme_template",
+        "action": "delete",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/theme_tmpl/:id/content",
+    "methods": {
+      "put": {
+        "controller": "theme_template",
+        "action": "updateContent",
+        "middleware": null
+      }
+    }
+  }
+
+]

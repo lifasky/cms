@@ -1,0 +1,106 @@
+[
+
+  {
+    "route": "/api/page",
+    "methods": {
+      "get": {
+        "controller": "page",
+        "action": "getall",
+        "middleware": null
+      },
+      "post": {
+        "controller": "page",
+        "action": "create",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page/keys",
+    "methods": {
+      "get": {
+        "controller": "page",
+        "action": "keys",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page/list",
+    "methods": {
+      "get": {
+        "controller": "page",
+        "action": "list",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page/page-tmpl/:id",
+    "methods": {
+      "get": {
+        "controller": "page",
+        "action": "getPagesByPageTmpl",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page/:id",
+    "methods": {
+      "get": {
+        "controller": "page",
+        "action": "get",
+        "middleware": null
+      },
+      "put": {
+        "controller": "page",
+        "action": "update",
+        "middleware": null
+      },
+      "delete": {
+        "controller": "page",
+        "action": "delete",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page/:id/publish",
+    "methods": {
+      "put": {
+        "controller": "page",
+        "action": "publish",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page/:id/unpublish",
+    "methods": {
+      "put": {
+        "controller": "page",
+        "action": "unPublish",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/page/:id/content",
+    "methods": {
+      "put": {
+        "controller": "page",
+        "action": "updateContent",
+        "middleware": null
+      }
+    }
+  }
+
+]
