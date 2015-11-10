@@ -1,21 +1,18 @@
 "use strict";
 
 var React = require("react");
-var ExtendMenu = require("./widget/ExtendMenu.jsx");
+var ExtendMenu = require("../widget/ExtendMenu.jsx");
 var _ = require("lodash");
-var ContentActions = require("../actions/Content.actions");
+var ContentActions = require("../../actions/Content.actions");
 
-var PageMenu = React.createClass({
+var RouteMenu = React.createClass({
   render: function() {
     var item = this.props.item || {};
     var selectedContent = this.props.selectedContent || {};
     var child = [];
-    child = _.map(item.submenu, function(n) {
-      return <LevelThreeItem key={n.id} item={n} />;
-    });
     var isFocusOn
     child = _.map(item.submenu, function(n) {
-      if (selectedContent.type === "page" && selectedContent.id === n.id) {
+      if (selectedContent.type === "route" && selectedContent.id === n.id) {
         isFocusOn = selectedContent;
       } else {
         isFocusOn = null;
@@ -23,13 +20,12 @@ var PageMenu = React.createClass({
       return <LevelTwoItem key={n.id} item={n} isFocusOn={isFocusOn}/>;
     });
     return (
-      <div className="editor_menu_level_1 editor_menu_level_1_page">
+      <div className="editor_menu_item editor_menu_level_1 editor_menu_level_1_route">
         <i 
           onClick={this._onCreate}
           className="fa fa-plus-circle pull-right"
         ></i>
-        <ExtendMenu 
-          isExtend={false}
+        <ExtendMenu
           displace_name={item.displace_name}
           child={child}
         />
@@ -38,11 +34,10 @@ var PageMenu = React.createClass({
   },
 
   _onCreate: function() {
-    var title = prompt("Title of the new Page.");
-    if (!title) {
-      title = "New Page";
+    var url = prompt("Please enter a new URL.");
+    if (url) {
+      ContentActions.route.create(url, null);
     }
-    ContentActions.page.create(title);
   }
 
 });
@@ -64,12 +59,9 @@ var LevelTwoItem = React.createClass({
       return <LevelThreeItem key={n._key} item={n} isFocusOn={isFocusOn}/>;
     });
     return (
-      <div className="editor_menu_item editor_menu_level_2 editor_menu_level_2_page">
+      <div className="editor_menu_item editor_menu_level_2 editor_menu_level_2_route">
         <i className="fa fa-trash-o pull-right" onClick={this._onDelete}></i>
-        <i className="fa fa-play pull-right" onClick={this._onReview}></i>
-        <i className={"fa fa-power-off pull-left " + (item.publish ? "active" : " ")} onClick={this._togglePublish}></i>
         <ExtendMenu 
-          isExtend={false} 
           displace_name={item.name}
           child={child}
         />
@@ -78,21 +70,12 @@ var LevelTwoItem = React.createClass({
   },
 
   _onDelete: function() {
-    var id = this.props.item.id;
+    var url = this.props.item.id;
     var c = confirm("Are you sure?");
     if (c) {
-      ContentActions.page.delete(id);
+      ContentActions.route.delete(url);
     }
-  },
-
-  _onReview: function() {
-    var id = this.props.item.id;
-  },
-
-  _togglePublish: function() {
-    var id = this.props.item.id;
-    ContentActions.page.togglePublish(id);
-  },
+  }
 
 });
 
@@ -102,7 +85,7 @@ var LevelThreeItem = React.createClass({
     var displace_name = item._key + (item.mode ? "." + item.mode : "");
     return (
       <div 
-        className={"editor_menu_item editor_menu_level_3 editor_menu_level_3_page " + (this.props.isFocusOn ? "active" : " ")} 
+        className={"editor_menu_item editor_menu_level_3 editor_menu_level_3_route " + (this.props.isFocusOn ? "active" : " ")} 
         onClick={this._onRender}
       >
         <span>{displace_name}</span>
@@ -111,12 +94,11 @@ var LevelThreeItem = React.createClass({
   },
 
   _onRender: function() {
-    var id = this.props.item.id;
+    var url = this.props.item.id;
     var field = this.props.item._key;
-    ContentActions.page.get(id, field);
+    ContentActions.route.get(url, field);
   }
 
 });
 
-
-module.exports = PageMenu;
+module.exports = RouteMenu;

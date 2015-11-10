@@ -10,7 +10,7 @@ require("brace/mode/css");
 require("brace/mode/jade");
 require("brace/mode/text");
 
-var CodeEditor = React.createClass({
+var Editor = React.createClass({
   render: function() {
     return (
       <AceEditor
@@ -33,4 +33,4 @@ var CodeEditor = React.createClass({
 });
 
 
-module.exports = CodeEditor;
+module.exports = Editor;

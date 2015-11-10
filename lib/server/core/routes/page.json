@@ -1,16 +1,11 @@
 [
 
   {
-    "route": "/api/page",
+    "route": "/api/page/all",
     "methods": {
       "get": {
         "controller": "page",
         "action": "getall",
-        "middleware": null
-      },
-      "post": {
-        "controller": "page",
-        "action": "create",
         "middleware": null
       }
     }
@@ -39,7 +34,7 @@
   },
 
   {
-    "route": "/api/page/page-tmpl/:id",
+    "route": "/api/page/page-tmpl",
     "methods": {
       "get": {
         "controller": "page",
@@ -50,11 +45,16 @@
   },
 
   {
-    "route": "/api/page/:id",
+    "route": "/api/page",
     "methods": {
       "get": {
         "controller": "page",
         "action": "get",
+        "middleware": null
+      },
+      "post": {
+        "controller": "page",
+        "action": "create",
         "middleware": null
       },
       "put": {
@@ -71,7 +71,7 @@
   },
 
   {
-    "route": "/api/page/:id/publish",
+    "route": "/api/page/publish",
     "methods": {
       "put": {
         "controller": "page",
@@ -82,7 +82,7 @@
   },
 
   {
-    "route": "/api/page/:id/unpublish",
+    "route": "/api/page/unpublish",
     "methods": {
       "put": {
         "controller": "page",
@@ -93,7 +93,7 @@
   },
 
   {
-    "route": "/api/page/:id/content",
+    "route": "/api/page/content",
     "methods": {
       "put": {
         "controller": "page",

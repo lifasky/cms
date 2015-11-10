@@ -5,13 +5,13 @@ var React = require("react");
 var ExtendMenu = React.createClass({
   getInitialState: function() {
     return {
-      isExtend: true
+      isExtend: false
     };
   },
 
   componentWillMount: function() {
-    if (this.props.isExtend === false) {
-      this.setState({isExtend: false});
+    if (this.props.isExtend === true) {
+      this.setState({isExtend: true});
     }
   },
 

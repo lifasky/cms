@@ -1,9 +1,13 @@
 "use strict";
 
 var React = require("react");
-var Editor = require("./components/Editor.jsx");
+var CodeEditor = require("./components/codeEditor/Main.jsx");
+var ContentManager = require("./components/contentManager/Main.jsx");
+var UserManager = require("./components/UserManager/Main.jsx");
+
+var Content = CodeEditor;
 
 React.render(
-  <Editor />,
-  document.body
+  <Content />,
+  document.getElementById("app_admin")
 );

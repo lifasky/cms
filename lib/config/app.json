@@ -14,6 +14,17 @@
       "maxAge": 86400000
     }
   },
+  "sites": {
+    "localhost": {
+      "id": "pages"
+    },
+    "www": {
+      "id": "www"
+    },
+    "dnb": {
+      "id": "dnb"
+    }
+  },
   "google": {
     "auth": {
       "clientID": "583968434694-ol6cfhuboru12qtnlbq73uredcnvql1d.apps.googleusercontent.com",

@@ -38,7 +38,7 @@
   },
 
   {
-    "route": "/api/route/page/:id",
+    "route": "/api/route/page",
     "methods": {
       "get": {
         "controller": "route",

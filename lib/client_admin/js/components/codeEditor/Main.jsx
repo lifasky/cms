@@ -2,9 +2,9 @@
 
 var React = require("react");
 var $ = require("jquery");
-var ContentActions = require("../actions/Content.actions");
-var ContentStore = require("../stores/Content.stores");
-var CodeEditor = require("./CodeEditor.jsx");
+var ContentActions = require("../../actions/Content.actions");
+var ContentStore = require("../../stores/Content.stores");
+var Editor = require("./Editor.jsx");
 var SideBarMenu = require("./SideBarMenu.jsx");
 var _ = require("lodash");
 
@@ -17,13 +17,13 @@ function getState() {
   };
 }
 
-var Editor = React.createClass({
+var Main = React.createClass({
   getInitialState: function() {
     return getState();
   },
 
   componentWillMount: function() {
-    ContentActions.editor.init();
+    ContentActions.init.editor();
   },
 
   componentDidMount: function() {
@@ -76,7 +76,7 @@ var Editor = React.createClass({
               }
             </div>
           </div>
-          <CodeEditor 
+          <Editor 
             mode={this.state.selectedContent.mode}
             value={this.state.selectedContent.value}
             handleChange={this._onContentChange}
@@ -92,7 +92,13 @@ var Editor = React.createClass({
   },
 
   _onContentChange: function(value) {
-    var content = _.assign(this.state.selectedContent, {"value": value});
+    var content = this.state.selectedContent;
+    if (typeof content.value === "object" && typeof value === "string") {
+      try {
+        value = JSON.parse(value);
+      } catch(e) {}
+    }
+    _.assign(content, {"value": value});
     this.setState({
       selectedContent: content
     });
@@ -110,4 +116,4 @@ var Editor = React.createClass({
 
 });
 
-module.exports = Editor;
+module.exports = Main;

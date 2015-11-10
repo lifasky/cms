@@ -1,16 +1,11 @@
 [
 
   {
-    "route": "/api/theme_tmpl",
+    "route": "/api/theme_tmpl/all",
     "methods": {
       "get": {
         "controller": "theme_template",
         "action": "getall",
-        "middleware": null
-      },
-      "post": {
-        "controller": "theme_template",
-        "action": "create",
         "middleware": null
       }
     }
@@ -39,11 +34,16 @@
   },
 
   {
-    "route": "/api/theme_tmpl/:id",
+    "route": "/api/theme_tmpl",
     "methods": {
       "get": {
         "controller": "theme_template",
         "action": "get",
+        "middleware": null
+      },
+      "post": {
+        "controller": "theme_template",
+        "action": "create",
         "middleware": null
       },
       "put": {
@@ -60,7 +60,7 @@
   },
 
   {
-    "route": "/api/theme_tmpl/:id/content",
+    "route": "/api/theme_tmpl/content",
     "methods": {
       "put": {
         "controller": "theme_template",

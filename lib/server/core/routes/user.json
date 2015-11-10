@@ -1,4 +1,14 @@
 [
+  {
+    "route": "/api/user/all",
+    "methods": {
+      "get": {
+        "controller": "user",
+        "action": "getall",
+        "middleware": null
+      }
+    }
+  },
 
   {
     "route": "/api/user",

@@ -1,18 +1,19 @@
 "use strict";
 
 var React = require("react");
-var ExtendMenu = require("./widget/ExtendMenu.jsx");
+var ExtendMenu = require("../widget/ExtendMenu.jsx");
 var _ = require("lodash");
-var ContentActions = require("../actions/Content.actions");
+var ContentActions = require("../../actions/Content.actions");
+var uuid = require("node-uuid");
 
-var RouteMenu = React.createClass({
+var ThemeTmplMenu = React.createClass({
   render: function() {
     var item = this.props.item || {};
     var selectedContent = this.props.selectedContent || {};
     var child = [];
-    var isFocusOn
+    var isFocusOn;
     child = _.map(item.submenu, function(n) {
-      if (selectedContent.type === "route" && selectedContent.id === n.id) {
+      if (selectedContent.type === "theme_tmpl" && selectedContent.id === n.id) {
         isFocusOn = selectedContent;
       } else {
         isFocusOn = null;
@@ -20,11 +21,7 @@ var RouteMenu = React.createClass({
       return <LevelTwoItem key={n.id} item={n} isFocusOn={isFocusOn}/>;
     });
     return (
-      <div className="editor_menu_item editor_menu_level_1 editor_menu_level_1_route">
-        <i 
-          onClick={this._onCreate}
-          className="fa fa-plus-circle pull-right"
-        ></i>
+      <div className="editor_menu_item editor_menu_level_1 editor_menu_level_1_theme_tmpl">
         <ExtendMenu
           displace_name={item.displace_name}
           child={child}
@@ -34,21 +31,25 @@ var RouteMenu = React.createClass({
   },
 
   _onCreate: function() {
-    var url = prompt("Please enter a new URL.");
-    if (url) {
-      ContentActions.route.create(url);
+    var name = prompt("Name of the new Theme Template.");
+    var id;
+    if (name) {
+      id = name.toLowerCase().replace(" ", "_");
+    } else {
+      id = uuid.v4();
     }
+    ContentActions.theme_tmpl.create(id, name);
   }
 
 });
 
 var LevelTwoItem = React.createClass({
-  
+
   render: function() {
     var self = this;
     var item = this.props.item || {};
     var child = [];
-    var isFocusOn;
+    var isFocusOn
     child = _.map(item.submenu, function(n) {
       if (self.props.isFocusOn && self.props.isFocusOn.field === n._key) {
         isFocusOn = true;
@@ -56,13 +57,14 @@ var LevelTwoItem = React.createClass({
         isFocusOn = false;
       }
       n.id = item.id;
-      return <LevelThreeItem key={n._key} item={n} isFocusOn={isFocusOn}/>;
+      if (n._key === "content") {
+        return <LevelThreeItem key={n._key} item={n} isFocusOn={isFocusOn}/>;
+      }
     });
     return (
-      <div className="editor_menu_item editor_menu_level_2 editor_menu_level_2_route">
+      <div className="editor_menu_item editor_menu_level_2 editor_menu_level_2_theme_tmpl">
         <i className="fa fa-trash-o pull-right" onClick={this._onDelete}></i>
         <ExtendMenu 
-          isExtend={false} 
           displace_name={item.name}
           child={child}
         />
@@ -71,10 +73,10 @@ var LevelTwoItem = React.createClass({
   },
 
   _onDelete: function() {
-    var url = this.props.item.id;
+    var id = this.props.item.id;
     var c = confirm("Are you sure?");
     if (c) {
-      ContentActions.route.delete(url);
+      ContentActions.theme_tmpl.delete(id);
     }
   }
 
@@ -83,23 +85,22 @@ var LevelTwoItem = React.createClass({
 var LevelThreeItem = React.createClass({
   render: function() {
     var item = this.props.item || {};
-    var displace_name = item._key + (item.mode ? "." + item.mode : "");
     return (
       <div 
-        className={"editor_menu_item editor_menu_level_3 editor_menu_level_3_route " + (this.props.isFocusOn ? "active" : " ")} 
+        className={"editor_menu_item editor_menu_level_3 editor_menu_level_3_theme_tmpl " + (this.props.isFocusOn ? "active" : " ")} 
         onClick={this._onRender}
       >
-        <span>{displace_name}</span>
+        <span>{item._key}</span>
       </div>
     );
   },
 
   _onRender: function() {
-    var url = this.props.item.id;
+    var id = this.props.item.id;
     var field = this.props.item._key;
-    ContentActions.route.get(url, field);
+    ContentActions.theme_tmpl.get(id, field);
   }
 
 });
 
-module.exports = RouteMenu;
+module.exports = ThemeTmplMenu;

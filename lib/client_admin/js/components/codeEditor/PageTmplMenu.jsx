@@ -1,9 +1,9 @@
 "use strict";
 
 var React = require("react");
-var ExtendMenu = require("./widget/ExtendMenu.jsx");
+var ExtendMenu = require("../widget/ExtendMenu.jsx");
 var _ = require("lodash");
-var ContentActions = require("../actions/Content.actions");
+var ContentActions = require("../../actions/Content.actions");
 
 var PageTmplMenu = React.createClass({
   render: function() {
@@ -26,6 +26,7 @@ var PageTmplMenu = React.createClass({
           className="fa fa-plus-circle pull-right"
         ></i>
         <ExtendMenu
+          isExtend={true} 
           displace_name={item.displace_name}
           child={child}
         />
@@ -34,13 +35,10 @@ var PageTmplMenu = React.createClass({
   },
 
   _onCreate: function() {
-    var name = prompt("Name of the new Page Template.");
-    if (name) {
-      name = name.toLowerCase();
-    } else {
-      name = "New Page Template";
+    var page_tmpl_id = prompt("ID of Page Template.");
+    if (page_tmpl_id) {
+      ContentActions.page_tmpl.create(page_tmpl_id);
     }
-    ContentActions.page_tmpl.create(name);
   }
 
 });
@@ -65,7 +63,6 @@ var LevelTwoItem = React.createClass({
       <div className="editor_menu_item editor_menu_level_2 editor_menu_level_2_page_tmpl">
         <i className="fa fa-trash-o pull-right" onClick={this._onDelete}></i>
         <ExtendMenu 
-          isExtend={false} 
           displace_name={item.name}
           child={child}
         />
