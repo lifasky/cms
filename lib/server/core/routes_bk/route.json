@@ -1,0 +1,56 @@
+[
+
+  {
+    "route": "/api/route",
+    "methods": {
+      "get": {
+        "controller": "route",
+        "action": "get",
+        "middleware": null
+      },
+      "post": {
+        "controller": "route",
+        "action": "create",
+        "middleware": null
+      },
+      "put": {
+        "controller": "route",
+        "action": "update",
+        "middleware": null
+      },
+      "delete": {
+        "controller": "route",
+        "action": "delete",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/route/all",
+    "methods": {
+      "get": {
+        "controller": "route",
+        "action": "getall",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/route/page",
+    "methods": {
+      "get": {
+        "controller": "route",
+        "action": "getUrlsByPageId",
+        "middleware": null
+      },
+      "post": {
+        "controller": "route",
+        "action": "createMupltiUrls",
+        "middleware": null
+      }
+    }
+  }
+
+]

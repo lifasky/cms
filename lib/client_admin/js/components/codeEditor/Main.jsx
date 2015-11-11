@@ -12,6 +12,7 @@ function getState() {
   return {
     user: {},
     menus: ContentStore.getMenus() || [],
+    typeof_selectedContent: typeof ContentStore.getSelectedContent(),
     selectedContent: ContentStore.getSelectedContent() || {},
     onLoading: ContentStore.getState()
   };
@@ -93,11 +94,6 @@ var Main = React.createClass({
 
   _onContentChange: function(value) {
     var content = this.state.selectedContent;
-    if (typeof content.value === "object" && typeof value === "string") {
-      try {
-        value = JSON.parse(value);
-      } catch(e) {}
-    }
     _.assign(content, {"value": value});
     this.setState({
       selectedContent: content
@@ -110,6 +106,11 @@ var Main = React.createClass({
     var field = this.state.selectedContent.field;
     var value = this.state.selectedContent.value;
     var content = {};
+    if (this.state.typeof_selectedContent === "object" && typeof value === "string") {
+      try {
+        value = JSON.parse(value);
+      } catch(e) {}
+    }
     content[field] = value;
     ContentActions[type]["update"](id, content);
   }

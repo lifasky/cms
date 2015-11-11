@@ -31,12 +31,6 @@ var Editor = React.createClass({
   },
 
   _onChnage: function(val) {
-    var isObject = true;
-    if (typeof this.props.value !== "string") {
-      try {
-        val = JSON.parse(val);
-      } catch(e) {}
-    }
     this.props.handleChange(val);
   }
 

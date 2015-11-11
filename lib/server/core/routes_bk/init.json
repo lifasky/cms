@@ -1,11 +1,10 @@
-{
-
-  "/api/init/cms": {
+[{
+  "route": "/api/init/cms",
+  "methods": {
     "get": {
       "controller": "initCMS",
       "action": "init",
       "middleware": null
     }
   }
-
-}
+}]

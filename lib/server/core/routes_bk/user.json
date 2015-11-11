@@ -1,0 +1,39 @@
+[
+  {
+    "route": "/api/user/all",
+    "methods": {
+      "get": {
+        "controller": "user",
+        "action": "getall",
+        "middleware": null
+      }
+    }
+  },
+
+  {
+    "route": "/api/user",
+    "methods": {
+      "get": {
+        "controller": "user",
+        "action": "get",
+        "middleware": null
+      },
+      "post": {
+        "controller": "user",
+        "action": "create",
+        "middleware": null
+      },
+      "put": {
+        "controller": "user",
+        "action": "update",
+        "middleware": null
+      },
+      "delete": {
+        "controller": "user",
+        "action": "delete",
+        "middleware": null
+      }
+    }
+  }
+
+]
