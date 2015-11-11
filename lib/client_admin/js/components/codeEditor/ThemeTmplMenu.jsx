@@ -36,12 +36,12 @@ var ThemeTmplMenu = React.createClass({
 
   _onCreate: function() {
     var name = prompt("Name of the new Theme Template.");
-    var id;
-    if (name) {
-      id = name.toLowerCase().replace(" ", "_");
-    } else {
-      id = uuid.v4();
-    }
+    // var id;
+    // if (name) {
+    //   id = name.toLowerCase().replace(" ", "_");
+    // } else {
+    //   id = uuid.v4();
+    // }
     ContentActions.theme_tmpl.create(id, name);
   }
 

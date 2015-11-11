@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "^1.4.2",
+    "azuqua": "^1.0.0",
     "body-parser": "^1.14.1",
     "connect-redis": "^3.0.0",
     "cookie-parser": "^1.4.0",
