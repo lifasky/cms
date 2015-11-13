@@ -28,6 +28,7 @@
   "devDependencies": {
     "brace": "^0.5.1",
     "browserify": "^10.2.4",
+    "classnames": "^2.2.0",
     "flux": "^2.1.1",
     "grunt": "~0.4.5",
     "grunt-browserify": "^3.8.0",

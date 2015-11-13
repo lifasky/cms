@@ -21,8 +21,10 @@ var ExtendMenu = React.createClass({
       <div className="extendMenu">
         <div className="extendMenu-warper">
           <div className="extendMenu-header" onClick={this._toggleExtend}>
-            {this.state.isExtend ? <i className="fa fa-angle-up"></i> : <i className="fa fa-angle-down"></i>}
-            <span>{this.props.displace_name}</span>
+            <div className="extendMenu-header-wrap">
+              {this.state.isExtend ? <i className="fa fa-angle-down"></i> : <i className="fa fa-angle-right"></i>}
+              <span>{this.props.displace_name}</span>
+            </div>
           </div>
           {this.state.isExtend ? this.props.child : null}
         </div>

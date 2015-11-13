@@ -6,6 +6,7 @@ var ContentActions = require("../../actions/Content.actions");
 var ContentStore = require("../../stores/Content.stores");
 var Editor = require("./Editor.jsx");
 var SideBarMenu = require("./SideBarMenu.jsx");
+var NavBar = require("../widget/NavBar.jsx");
 var _ = require("lodash");
 
 function getState() {
@@ -47,43 +48,48 @@ var Main = React.createClass({
 
   render: function() {
     return (
-      <div className="row">
+      <div className="wm_container wm_editor_container">
+        <NavBar focusOn={"develop"} />
+        <div className="row">
 
-        <div className="col-lg-3 col-md-3 col-sm-3">
-          <SideBarMenu 
-            menus={this.state.menus} 
-            selectedContent={this.state.selectedContent}
-          />
-        </div>
-
-        <div className="col-lg-9 col-md-9 col-sm-9">
-          {this.state.onLoading ?
-            <div className="loading_screen"></div>
-            : null
-          }
-          <div className="row">
-            <div className="col-lg-8 col-md-8 col-sm-8">
-              {!_.isEmpty(this.state.selectedContent) ?
-                this.state.selectedContent.type_displace_name + " / " + this.state.selectedContent.name + " / " + this.state.selectedContent.field  
-                : "EDITOR"
-              }
-            </div>
-            <div className="col-lg-4 col-md-4 col-sm-4">
-              {!_.isEmpty(this.state.selectedContent) ?
-                <button className="pull-right" onClick={this._onSave}>
-                  Save
-                </button>
-              : null
-              }
-            </div>
+          <div className="col-lg-3 col-md-3 col-sm-3">
+            <SideBarMenu 
+              menus={this.state.menus} 
+              selectedContent={this.state.selectedContent}
+            />
           </div>
-          <Editor 
-            mode={this.state.selectedContent.mode}
-            value={this.state.selectedContent.value}
-            handleChange={this._onContentChange}
-          />
-        </div>
 
+          <div className="col-lg-9 col-md-9 col-sm-9">
+            {this.state.onLoading ?
+              <div className="loading_screen"></div>
+              : null
+            }
+            <div className="row">
+              <div className="col-lg-8 col-md-8 col-sm-8">
+                <span className="code_editor_title">
+                  {!_.isEmpty(this.state.selectedContent) ?
+                    this.state.selectedContent.type_displace_name + " / " + this.state.selectedContent.name + " / " + this.state.selectedContent.field  
+                    : "EDITOR"
+                  }
+                </span>
+              </div>
+              <div className="col-lg-4 col-md-4 col-sm-4">
+                {!_.isEmpty(this.state.selectedContent) ?
+                  <button className="pull-right" onClick={this._onSave}>
+                    Save
+                  </button>
+                : null
+                }
+              </div>
+            </div>
+            <Editor 
+              mode={this.state.selectedContent.mode}
+              value={this.state.selectedContent.value}
+              handleChange={this._onContentChange}
+            />
+          </div>
+
+        </div>
       </div>
     );
   },

@@ -4,7 +4,6 @@ var React = require("react");
 var ExtendMenu = require("../widget/ExtendMenu.jsx");
 var _ = require("lodash");
 var ContentActions = require("../../actions/Content.actions");
-var uuid = require("node-uuid");
 
 var ThemeTmplMenu = React.createClass({
   render: function() {
@@ -32,13 +31,9 @@ var ThemeTmplMenu = React.createClass({
 
   _onCreate: function() {
     var name = prompt("Name of the new Theme Template.");
-    var id;
     if (name) {
-      id = name.toLowerCase().replace(" ", "_");
-    } else {
-      id = uuid.v4();
+      ContentActions.theme_tmpl.create(name);
     }
-    ContentActions.theme_tmpl.create(id, name);
   }
 
 });

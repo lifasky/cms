@@ -1,0 +1,66 @@
+{
+
+  "/api/api/all": {
+    "get": {
+      "controller": "api",
+      "action": "getall",
+      "middleware": null
+    }
+  },
+
+  "/api/api/keys": {
+    "get": {
+      "controller": "api",
+      "action": "keys",
+      "middleware": null
+    }
+  },
+
+  "/api/api/list": {
+    "get": {
+      "controller": "api",
+      "action": "list",
+      "middleware": null
+    }
+  },
+
+  "/api/api": {
+    "get": {
+      "controller": "api",
+      "action": "get",
+      "middleware": null
+    },
+    "post": {
+      "controller": "api",
+      "action": "create",
+      "middleware": null
+    },
+    "put": {
+      "controller": "api",
+      "action": "update",
+      "middleware": null
+    },
+    "delete": {
+      "controller": "api",
+      "action": "delete",
+      "middleware": null
+    }
+  },
+
+  "/api/api/publish": {
+    "put": {
+      "controller": "api",
+      "action": "publish",
+      "middleware": null
+    }
+  },
+
+  "/api/api/unpublish": {
+    "put": {
+      "controller": "api",
+      "action": "unPublish",
+      "middleware": null
+    }
+  }
+
+}

@@ -4,6 +4,7 @@ var React = require("react");
 var $ = require("jquery");
 var ContentActions = require("../../actions/Content.actions");
 var ContentStore = require("../../stores/Content.stores");
+var NavBar = require("../widget/NavBar.jsx");
 var _ = require("lodash");
 
 function getState() {
@@ -45,6 +46,7 @@ var Main = React.createClass({
     var users = this.state.users;
     return (
       <div>
+        <NavBar focusOn={"users"} />
         <label>USERS</label>
         <ul className="list-group">
           {

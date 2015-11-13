@@ -1,7 +1,7 @@
 {
 
   "/api/init/cms": {
-    "get": {
+    "post": {
       "controller": "initCMS",
       "action": "init",
       "middleware": null

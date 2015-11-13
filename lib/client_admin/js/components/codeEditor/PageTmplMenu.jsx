@@ -12,7 +12,7 @@ var PageTmplMenu = React.createClass({
     var child = [];
     var isFocusOn
     child = _.map(item.submenu, function(n) {
-      if (selectedContent.type === "theme_tmpl" && selectedContent.id === n.id) {
+      if (selectedContent.type === "page_tmpl" && selectedContent.id === n.id) {
         isFocusOn = selectedContent;
       } else {
         isFocusOn = null;

@@ -37,6 +37,14 @@
       "action": "getUrlsByPageId",
       "middleware": null
     }
+  },
+
+  "/api/route/api": {
+    "get": {
+      "controller": "route",
+      "action": "getUrlsByApiId",
+      "middleware": null
+    }
   }
 
 }
