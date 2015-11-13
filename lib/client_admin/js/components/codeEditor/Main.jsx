@@ -20,6 +20,7 @@ function getState() {
 }
 
 var Main = React.createClass({
+
   getInitialState: function() {
     return getState();
   },
@@ -100,7 +101,9 @@ var Main = React.createClass({
 
   _onContentChange: function(value) {
     var content = this.state.selectedContent;
-    _.assign(content, {"value": value});
+    _.assign(content, {
+      "value": value
+    });
     this.setState({
       selectedContent: content
     });
@@ -115,7 +118,7 @@ var Main = React.createClass({
     if (this.state.typeof_selectedContent === "object" && typeof value === "string") {
       try {
         value = JSON.parse(value);
-      } catch(e) {}
+      } catch (e) {}
     }
     content[field] = value;
     ContentActions[type]["update"](id, content);
