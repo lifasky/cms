@@ -58,7 +58,6 @@ var LevelTwoItem = React.createClass({
     });
     return (
       <div className="editor_menu_item editor_menu_level_2 editor_menu_level_2_theme_tmpl">
-        <i className="fa fa-trash-o pull-right" onClick={this._onDelete}></i>
         <ExtendMenu 
           displace_name={item.name}
           child={child}

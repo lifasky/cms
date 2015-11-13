@@ -45,21 +45,23 @@ var Main = React.createClass({
   render: function() {
     var users = this.state.users;
     return (
-      <div>
+      <div className="wm_container wm_users_manager_container">
         <NavBar focusOn={"users"} />
-        <label>USERS</label>
-        <ul className="list-group">
-          {
-            _.map(users, function(n, key) {
-              return <UserItem key={key} user={n} />;
-            })
-          }
-          <li onClick={this._onAdd} className="list-group-item">
-            <center>
-              <i className="fa fa-plus"></i>
-            </center>
-          </li>
-        </ul>
+        <div className="wm_users_manager_main">
+          <label>USERS</label>
+          <ul className="list-group">
+            {
+              _.map(users, function(n, key) {
+                return <UserItem key={key} user={n} />;
+              })
+            }
+            <li onClick={this._onAdd} className="list-group-item">
+              <center>
+                <i className="fa fa-plus"></i>
+              </center>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   },

@@ -10,7 +10,7 @@ var SideBarMenu = React.createClass({
   render: function() {
     var menus = this.props.menus;
     return (
-      <div>
+      <div className="sidebar_menu_container">
         <span>CATEGORIES</span>
         <div className="SideBarMenu">
           <PageMenu item={menus[2]} selectedContent={this.props.selectedContent} />

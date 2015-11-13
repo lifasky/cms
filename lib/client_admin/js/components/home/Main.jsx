@@ -15,9 +15,11 @@ var Main = React.createClass({
           </div>
         </nav>
 
-        <center>
-          <div className="wm_logo_box">WM</div>
-        </center>
+        <div className="section_head">
+          <center>
+            <div className="wm_logo_box">WM</div>
+          </center>
+        </div>
 
         <div className="list-group">
           <a href="/#develop" className="list-group-item">

@@ -38,20 +38,20 @@ var ContentEditor = React.createClass({
   },
 
   _handleChange: function(content) {
-    var old_content = this.props.content;
-    var isObject = true;
-    if (typeof old_content !== "object") {
-      try {
-        old_content = JSON.parse(old_content);
-        isObject = false;
-      } catch(e) {}
-    }
-    if (old_content && !old_content[0]) {
-      content = content[0];
-    }
-    if (!isObject) {
-      content = JSON.stringify(content);
-    }
+    // var old_content = this.props.content;
+    // var isObject = true;
+    // if (typeof old_content !== "object") {
+    //   try {
+    //     old_content = JSON.parse(old_content);
+    //     isObject = false;
+    //   } catch(e) {}
+    // }
+    // if (old_content && !old_content[0]) {
+    //   content = content[0];
+    // }
+    // if (!isObject) {
+    //   content = JSON.stringify(content);
+    // }
     this.props.handleChange(content);
   }
 
@@ -126,8 +126,10 @@ var Bucket = React.createClass({
       );
     });
     return (
-      <div className="row">
-        {content}
+      <div className={"col-lg-12 col-md-12 col-sm-12 col-xs-12"}>
+        <div className="row">
+          {content}
+        </div>
       </div>
     );
   },
@@ -148,7 +150,7 @@ var BucketItem = React.createClass({
     return (
       <div className={"col-lg-" + num + " col-md-" + num + " col-sm-" + num + " col-xs-" + num}>
         <div className="box-bucket">
-          <SectionItem content={content} handleChange={self._handleChange} />;
+          <SectionItem content={content} handleChange={self._handleChange} />
         </div>
       </div>
     );

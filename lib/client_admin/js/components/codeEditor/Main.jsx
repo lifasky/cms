@@ -48,9 +48,9 @@ var Main = React.createClass({
 
   render: function() {
     return (
-      <div className="wm_container wm_editor_container">
+      <div className="wm_container wm_code_editor_container">
         <NavBar focusOn={"develop"} />
-        <div className="row">
+        <div className="row wm_code_editor_main">
 
           <div className="col-lg-3 col-md-3 col-sm-3">
             <SideBarMenu 
@@ -75,7 +75,7 @@ var Main = React.createClass({
               </div>
               <div className="col-lg-4 col-md-4 col-sm-4">
                 {!_.isEmpty(this.state.selectedContent) ?
-                  <button className="pull-right" onClick={this._onSave}>
+                  <button className="pull-right btn btn-default btn-sm btn-save" onClick={this._onSave}>
                     Save
                   </button>
                 : null

@@ -1,0 +1,81 @@
+.wm_code_editor_container {
+  background-color: #262626;
+  .navbar {
+    margin-bottom: 0;
+  }
+  .ace-monokai {
+    background-color: #2D2D2D;
+  }
+  .ace-monokai .ace_gutter {
+    background: #333333;
+  }
+  .sidebar_menu_title, .code_editor_title {
+    color: #929184;
+  }
+  .editor_menu_item {
+    // padding-left: 15px;
+  }
+  .btn-save {
+    color: #fff;
+    background-color: @blue;
+    margin: 0 10px;
+    padding: 4px 20px;
+  }
+  .sidebar_menu_container {
+    color: #929184;
+    line-height: 23px;
+    padding-left: 15px;
+    .fa-angle-right,
+    .fa-angle-down {
+      margin-left: 5px;
+      margin-right: 10px;
+      color: #78776A;
+    }
+    span:hover {
+      color: lighten(#929184, 20%);
+    }
+    .extendMenu-header-wrap:hover {
+      background-color: #333333;
+    }
+    .fa-plus-circle,
+    .fa-trash-o,
+    .fa-power-off {
+      margin: 4px;
+    }
+    .fa-plus-circle:hover,
+    .fa-trash-o:hover {
+      color: lighten(#929184, 20%);
+      margin: 4px;
+    }
+    .fa-power-off {
+      &.active {
+        color: #A3DE2D;
+      }
+    }
+  }
+  .editor_menu_level_1 {}
+  .editor_menu_level_2 {
+    .extendMenu-header-wrap {
+      padding-left: 20px;
+    }
+  }
+  .editor_menu_level_3 {
+    &.active {
+      background-color: #333333;
+    }
+    span {
+      padding-left: 60px;
+    }
+  }
+  .editor {
+    height: 150px;
+    width: 100%;
+  }
+  label {
+    font-weight: normal;
+  }
+  .editor_menu_item .fa:hover {
+    cursor: pointer;
+    color: #999;
+  }
+}

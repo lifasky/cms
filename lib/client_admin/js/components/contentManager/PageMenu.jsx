@@ -66,7 +66,7 @@ var LevelTwoItem = React.createClass({
     return (
       <div className="editor_menu_item editor_menu_level_2 editor_menu_level_2_page">
         <i className="fa fa-trash-o pull-right" onClick={this._onDelete}></i>
-        <i className={"fa fa-power-off pull-left " + (item.publish ? "active" : " ")} onClick={this._togglePublish}></i>
+        <i className={"fa fa-power-off pull-right " + (item.publish ? "active" : " ")} onClick={this._togglePublish}></i>
         <ExtendMenu 
           isExtend={true}
           displace_name={item.name}

@@ -14,6 +14,7 @@ function getState() {
   return {
     user: {},
     menus: ContentStore.getMenus() || [],
+    typeof_selectedContent: typeof ContentStore.getSelectedContent(),
     selectedContent: ContentStore.getSelectedContent() || {},
     onLoading: ContentStore.getState()
   };
@@ -54,9 +55,9 @@ var Main = React.createClass({
       Editor = <ContentEditor content={this.state.selectedContent.value} handleChange={this._handleChange} />;
     }
     return (
-      <div>
+      <div className="wm_container wm_content_manager_container">
         <NavBar focusOn={"content"} />
-        <div className="row">
+        <div className="row wm_content_manager_main">
 
           <div className="col-lg-3 col-md-3 col-sm-3">
             <SideBarMenu 
@@ -79,7 +80,7 @@ var Main = React.createClass({
               </div>
               <div className="col-lg-4 col-md-4 col-sm-4">
                 {!_.isEmpty(this.state.selectedContent) ?
-                  <button className="pull-right" onClick={this._onSave}>
+                  <button className="btn btn-default btn-save pull-right" onClick={this._onSave}>
                     Save
                   </button>
                 : null
@@ -122,6 +123,11 @@ var Main = React.createClass({
     var field = this.state.selectedContent.field;
     var value = this.state.selectedContent.value;
     var content = {};
+    if (this.state.typeof_selectedContent === "object" && typeof value === "string") {
+      try {
+        value = JSON.parse(value);
+      } catch(e) {}
+    }
     content[field] = value;
     ContentActions[type]["update"](id, content);
   }
