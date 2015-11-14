@@ -7,12 +7,19 @@ body {
   text-align: -webkit-center;
 }
 
+.inner {
+  padding: 10px;
+}
+
 div {
   // border: 1px solid #ccc;
 }
 
+.wm_container {
+  width: 100%;
+}
+
 .navbar-inverse .navbar-brand {
-  color: @blue_3;
 }
 
 .navbar {
@@ -45,7 +52,6 @@ div {
   font-size: 56px;
   line-height: 125px;
   padding-bottom: 5px;
-  color: @blue_3;
 }
 
 .list-group .hint {
@@ -66,4 +72,26 @@ div {
   background: url('https://s3.amazonaws.com/azuqua_static/images/theme/loading-circle.gif') 50% 50% no-repeat;
   background-size: 50px 50px;
   background-position: center 70px;
+}
+
+a.list-group-item:hover {
+  background-color: @blue_l_5;
+}
+
+.hint {
+  font-size: 11px;
+  font-weight: 500;
+  color: @black_5;
+}
+
+input:read-only { 
+  cursor:not-allowed;
+}
+
+.fa:hover {
+  color: @blue;
+}
+
+.fa-times:hover, .fa-trash-o:hover {
+  color: @red;
 }

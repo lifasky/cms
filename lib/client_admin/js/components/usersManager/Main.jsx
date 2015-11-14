@@ -55,7 +55,7 @@ var Main = React.createClass({
                 return <UserItem key={key} user={n} />;
               })
             }
-            <li onClick={this._onAdd} className="list-group-item">
+            <li onClick={this._onAdd} className="list-group-item list-group-item-add">
               <center>
                 <i className="fa fa-plus"></i>
               </center>

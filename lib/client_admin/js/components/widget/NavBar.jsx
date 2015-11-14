@@ -19,7 +19,7 @@ var NavBar = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">WM</a>
+            <a className="navbar-brand" href="#"><span className="red">red</span><span className="white">studio</span></a>
           </div>
 
           <div className="collapse navbar-collapse" id="main-navbar-collapse-1">

@@ -8,11 +8,11 @@ var UrlPanel = require("./UrlPanel.jsx");
 function getHint(key) {
   switch (key) {
     case "title":
-      return <label className="hint">Displayed in Browser title bar and in search results. Make it more descriptive. Less than 70 characters are recommended.</label>;
+      return <label className="hint"> &nbsp; Displayed in Browser title bar and in search results. Make it more descriptive. Less than 70 characters are recommended.</label>;
     case "keywords":
-      return <label className="hint">Separate keywords with comma. <strong>Example</strong>: <i>smartsheet, http, zendesk</i></label>;
+      return <label className="hint"> &nbsp; Separate keywords with comma. <strong>Example</strong>: <i>smartsheet, http, zendesk</i></label>;
     case "description":
-      return <label className="hint">Less than 150 characters are recommended.</label>
+      return <label className="hint"> &nbsp; Less than 150 characters are recommended.</label>
   }
 }
 
@@ -20,6 +20,12 @@ var ConfigEditor = React.createClass({
 
   render: function() {
     var content = this.props.content;
+    // only developer allow to modify actions;
+    delete content.requiedPreload;
+    delete content.controller;
+    delete content.action;
+    delete content.middleware;
+    delete content.params;
     return (
       <div>
         <Section content={content} handleChange={this._handleChange} />
@@ -202,6 +208,7 @@ var PageTmplId = React.createClass({
             </ul>
           </div>
         </div>
+        <br/>
       </div>
     );
   },

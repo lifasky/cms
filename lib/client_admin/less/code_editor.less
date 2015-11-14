@@ -12,19 +12,26 @@
   .sidebar_menu_title, .code_editor_title {
     color: #929184;
   }
+  .code_editor_title {
+    padding-left: 15px;
+  }
   .editor_menu_item {
     // padding-left: 15px;
   }
   .btn-save {
     color: #fff;
-    background-color: @blue;
+    background-color: @orange;
     margin: 0 10px;
     padding: 4px 20px;
+    &:hover {
+      background-color: darken(@orange, 10%);
+    }
   }
   .sidebar_menu_container {
     color: #929184;
     line-height: 23px;
     padding-left: 15px;
+    padding-right: 15px;
     .fa-angle-right,
     .fa-angle-down {
       margin-left: 5px;
@@ -40,11 +47,6 @@
     .fa-plus-circle,
     .fa-trash-o,
     .fa-power-off {
-      margin: 4px;
-    }
-    .fa-plus-circle:hover,
-    .fa-trash-o:hover {
-      color: lighten(#929184, 20%);
       margin: 4px;
     }
     .fa-power-off {
@@ -76,6 +78,8 @@
   }
   .editor_menu_item .fa:hover {
     cursor: pointer;
-    color: #999;
+  }
+  .code_editor_wrap {
+    padding: 0 15px;
   }
 }

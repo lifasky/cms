@@ -1,23 +1,19 @@
 "use strict";
 
 var React = require("react");
+var NavBar = require("../widget/NavBar.jsx");
 
 var Main = React.createClass({
 
   render: function() {
     return (
       <div className="wm_container">
-        <nav className="navbar navbar-inverse">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="/">WM</a>
-            </div>
-          </div>
-        </nav>
+
+        <NavBar />
 
         <div className="section_head">
           <center>
-            <div className="wm_logo_box">WM</div>
+            <div className="wm_logo_box"><span className="red">red</span><span className="white">studio</span></div>
           </center>
         </div>
 
@@ -45,6 +41,7 @@ var Main = React.createClass({
             <span className="hint"> (coming soon)</span>
           </a>
         </div>
+
       </div>
     );
   }

@@ -4,9 +4,12 @@
   }
   .btn-save {
     color: #fff;
-    background-color: @blue;
+    background-color: @orange;
     margin: 0 10px;
     padding: 4px 20px;
+    &:hover {
+      background-color: darken(@orange, 10%);
+    }
   }
   .sidebar_menu_container {
     .sidebar_menu_title {}
@@ -15,7 +18,7 @@
       border-right: 1px solid #ccc;
     }
     line-height: 23px;
-    padding-left: 15px;
+    // padding-left: 15px;
     .fa-angle-right,
     .fa-angle-down {
       margin-left: 5px;
@@ -23,16 +26,11 @@
       color: @black_4;
     }
     .extendMenu-header-wrap:hover {
-      background-color: @blue_5;
+      background-color: @blue_l_5;
     }
     .fa-plus-circle,
     .fa-trash-o,
     .fa-power-off {
-      margin: 4px;
-    }
-    .fa-plus-circle:hover,
-    .fa-trash-o:hover {
-      color: @black_6;
       margin: 4px;
     }
     .fa:hover {
@@ -51,10 +49,10 @@
     }
     .editor_menu_level_3 {
       &:hover {
-        background-color: @blue_5;
+        background-color: @blue_l_5;
       }
       &.active {
-        background-color: @blue_4;
+        background-color: @blue_l_4;
       }
       span {
         padding-left: 60px;
@@ -71,5 +69,12 @@
     .dropdown-menu {
       padding: 5px 10px;
     }
+  }
+  .list-group-item-add:hover {
+    background-color: @blue_l_5;
+  }
+  .btn-default:hover {
+    background-color: @blue_l_5;
+
   }
 }

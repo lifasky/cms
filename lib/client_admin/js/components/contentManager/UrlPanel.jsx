@@ -10,14 +10,14 @@ var UrlPanel = React.createClass({
     var page_id = this.props.page_id;
     return (
       <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <label>Path</label>
+        <label>path</label>
         <ul className="list-group">
           {
             _.map(urls, function(n, key) {
               return <UrlItem key={key} url={n} page_id={page_id} />;
             })
           }
-          <li onClick={this._onAdd} className="list-group-item">
+          <li onClick={this._onAdd} className="list-group-item list-group-item-add">
             <center>
               <i className="fa fa-plus"></i>
             </center>
